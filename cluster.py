@@ -1,7 +1,8 @@
 import logging
 
-from sklearn.cluster import Birch
+from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_score
+# from sklearn.mixture import GaussianMixture
 
 
 logger = logging.getLogger(__name__)
@@ -16,9 +17,9 @@ def cluster(data):
     return inertias
 
 
-def build_clusters(data, n_clusters, threshold=0.1):
-    # kmeans = KMeans(n_clusters=n_clusters, n_init='auto')
-    kmeans = Birch(threshold=threshold, n_clusters=n_clusters)
+def build_clusters(data, n_clusters, threshold=0.001):
+    kmeans = KMeans(n_clusters=n_clusters, n_init='auto')
+    # kmeans = Birch(threshold=threshold, n_clusters=n_clusters)
     # kmeans = GaussianMixture(n_components=n_clusters)
     kmeans.fit(data)
     return kmeans

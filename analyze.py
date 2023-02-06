@@ -4,7 +4,7 @@ from pathlib import Path
 import sys
 from deepface import DeepFace
 
-from config import DATA_FILE, IMAGES_PATH
+from config import DATA_FILE, FILE_MASK, IMAGES_PATH
 from utils import read_data
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
@@ -25,7 +25,7 @@ def rec_img(img):
 
 
 def get_images(dir):
-    files = Path(dir).glob('*')
+    files = Path(dir).glob(FILE_MASK)
     return [file for file in files]
 
 
